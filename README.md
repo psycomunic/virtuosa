@@ -142,9 +142,11 @@ promessa numérica, com nota de que resultados variam.
 ambas 1200×630 e abaixo de 100 KB, dentro do que o WhatsApp aceita para
 mostrar o preview grande.
 
-> **Antes de publicar:** troque `SEU-DOMINIO.com.br` pelo domínio real nas
-> meta tags `og:` e `canonical` das duas páginas. O WhatsApp **exige URL
-> absoluta** em `og:image`; com caminho relativo o preview não aparece.
+URL de produção: **https://virtuosa-cyan.vercel.app**
+
+> Ao apontar um domínio próprio, atualize as URLs absolutas nas meta tags
+> `og:`/`canonical` das duas páginas. O WhatsApp **exige URL absoluta** em
+> `og:image`; com caminho relativo o preview não aparece.
 
 Depois de publicar, force a releitura do cache:
 - WhatsApp: cola o link no [validador do Facebook](https://developers.facebook.com/tools/debug/) e clica em "Scrape Again" (o WhatsApp usa o mesmo cache)
