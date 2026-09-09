@@ -1,0 +1,2 @@
+Todas as imagens da pagina ja estao integradas.
+Arquivos-mestre em ../originais/ | recortes gerados: ver README.md secao "Imagens originais".

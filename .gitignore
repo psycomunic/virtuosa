@@ -1,0 +1,12 @@
+# arquivos-mestre das fotos (dezenas de MB; as versoes servidas ficam em assets/img)
+assets/originais/
+
+# temporarios de desenvolvimento
+*-debug.html
+frame-teste.html
+_parciais.txt
+
+# sistema
+Thumbs.db
+desktop.ini
+.DS_Store
