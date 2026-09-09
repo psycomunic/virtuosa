@@ -71,12 +71,23 @@ section{position:relative}
 .bg-nude{background:var(--nude)}
 .center{text-align:center}
 .section-head{max-width:640px;margin:0 auto 44px;text-align:center}
+@media(max-width:560px){
+  /* a palavra em script e larga: ganha linha propria em vez de ser cortada */
+  .section-head h2 .script,.final h2 .script{display:block}
+  h1,h2{overflow-wrap:break-word}
+}
+/* o trecho em script nunca quebra no meio: desce inteiro para a linha seguinte */
+@media(min-width:561px){.section-head h2 .script{white-space:nowrap}}
 .section-head p{margin-bottom:0}
 
 /* Traco organico decorativo (eco do logo em linha continua) */
 .wave{display:block;width:100%;line-height:0}
-.wave svg{display:block;width:100%;height:58px}
-@media(min-width:768px){.wave svg{height:88px}}
+/* a onda e o ultimo filho da secao: o padding-bottom deixava uma faixa
+   da cor anterior depois dela, quebrando a transicao entre as secoes */
+.section:has(> .wave){padding-bottom:0}
+.section > .wave{margin-top:clamp(38px,6vw,62px)}
+.wave svg{display:block;width:100%;height:38px}
+@media(min-width:768px){.wave svg{height:54px}}
 .line-deco{position:absolute;pointer-events:none;z-index:0;opacity:.5}
 section:has(.line-deco){overflow:hidden}
 
@@ -151,18 +162,18 @@ section:has(.line-deco){overflow:hidden}
    Desktop: coluna direita ocupando toda a altura da hero. */
 .hero .hero__photo{
   position:absolute;left:0;right:0;bottom:0;z-index:0;
-  height:clamp(310px,74vw,470px);
+  height:clamp(400px,96vw,580px);
 }
 .hero .hero__photo picture,.hero .hero__photo img{width:100%;height:100%;display:block}
-.hero .hero__photo img{object-fit:cover;object-position:50% 10%}
+.hero .hero__photo img{object-fit:cover;object-position:50% 6%}
 .hero .hero__photo::after{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(to bottom,
     var(--rose-bg) 0%,
-    rgba(253,242,248,.88) 12%,
-    rgba(253,242,248,.45) 28%,
-    rgba(253,242,248,.12) 45%,
-    rgba(253,242,248,0) 64%);
+    rgba(253,242,248,.72) 9%,
+    rgba(253,242,248,.26) 22%,
+    rgba(253,242,248,.05) 36%,
+    rgba(253,242,248,0) 50%);
 }
 
 /* camada 1: veu horizontal (so no desktop) */
@@ -171,7 +182,7 @@ section:has(.line-deco){overflow:hidden}
 /* camada 2: conteudo */
 .hero .wrap{position:relative;z-index:2}
 .hero .wave{position:relative;z-index:3}
-.hero__grid{display:grid;gap:34px;align-items:center;padding-bottom:clamp(250px,64vw,410px)}
+.hero__grid{display:grid;gap:34px;align-items:center;padding-bottom:clamp(330px,84vw,500px)}
 .hero h1{margin-bottom:18px}
 .hero h1 .script{display:block;font-size:1.08em;line-height:.95;margin-top:.04em}
 .hero__sub{max-width:34rem;margin-bottom:26px}
@@ -190,9 +201,11 @@ section:has(.line-deco){overflow:hidden}
   background:var(--rose);margin:0 13px;vertical-align:middle;
 }
 .seals strong{color:var(--magenta);font-weight:700;font-size:.8rem;letter-spacing:.04em}
-@media(max-width:420px){
-  .seals{letter-spacing:.08em;font-size:.66rem}
-  .seals li:not(:last-child)::after{margin:0 9px}
+@media(max-width:620px){
+  .seals{flex-direction:column;align-items:flex-start;gap:8px;letter-spacing:.1em;font-size:.68rem}
+  .seals li:not(:last-child)::after{display:none}
+  .seals li{gap:7px}
+  .seals strong{font-size:.78rem}
 }
 
 .hero__badge{
@@ -200,7 +213,7 @@ section:has(.line-deco){overflow:hidden}
   background:rgba(255,255,255,.9);backdrop-filter:blur(8px);
   border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:9px 16px;
   box-shadow:0 12px 30px -22px rgba(31,27,30,.9);
-  display:flex;align-items:center;gap:9px;max-width:270px;
+  display:flex;align-items:center;gap:9px;max-width:min(270px, calc(100% - 32px));
 }
 .hero__badge-stars{display:inline-flex;gap:2px;flex:none}
 .hero__badge-stars svg{width:13px;height:13px;color:#F6B93B}
@@ -232,10 +245,10 @@ section:has(.line-deco){overflow:hidden}
       rgba(253,242,248,0) 52%);
   }
   .hero__grid{padding-bottom:0;grid-template-columns:minmax(0,53%);padding-left:clamp(0px,4vw,72px)}
-  .hero__badge{right:auto;left:calc(50% - 40px);bottom:74px;max-width:250px}
+  .hero__badge{left:auto;right:5%;bottom:104px;max-width:260px}
 }
 @media(min-width:1280px){
-  .hero__badge{left:calc(48% - 20px)}
+  .hero__badge{right:6%;bottom:112px}
 }
 
 /* ---------- Slots de imagem ---------- */
@@ -488,6 +501,8 @@ section:has(.line-deco){overflow:hidden}
 
 /* ---------- Footer ---------- */
 .footer{background:var(--bordo-deep);color:rgba(255,255,255,.75);padding:56px 0 30px;font-size:.88rem}
+/* espaco para o botao flutuante nao cobrir o rodape no celular */
+@media(max-width:640px){.footer{padding-bottom:92px}.wa-float{width:56px;height:56px}.wa-float svg{width:29px;height:29px}}
 .footer a:hover{color:#fff}
 .footer__grid{display:grid;gap:28px}
 @media(min-width:800px){.footer__grid{grid-template-columns:1.2fr 1fr 1fr}}
