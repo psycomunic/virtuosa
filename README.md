@@ -136,6 +136,24 @@ mais promovida. A página reflete essa hierarquia.
 com risco jurídico (CDC/Conar) e de frustração. A página usa linguagem de resultado sem
 promessa numérica, com nota de que resultados variam.
 
+## Imagem de compartilhamento (WhatsApp / redes)
+
+`assets/img/og-image.jpg` (home) e `assets/img/og-corporais.jpg` (interna),
+ambas 1200×630 e abaixo de 100 KB, dentro do que o WhatsApp aceita para
+mostrar o preview grande.
+
+> **Antes de publicar:** troque `SEU-DOMINIO.com.br` pelo domínio real nas
+> meta tags `og:` e `canonical` das duas páginas. O WhatsApp **exige URL
+> absoluta** em `og:image`; com caminho relativo o preview não aparece.
+
+Depois de publicar, force a releitura do cache:
+- WhatsApp: cola o link no [validador do Facebook](https://developers.facebook.com/tools/debug/) e clica em "Scrape Again" (o WhatsApp usa o mesmo cache)
+- O cache do link antigo pode levar até 7 dias para expirar sozinho
+
+Para regerar as imagens, os HTMLs de origem podem ser recriados a partir do
+histórico do git (`_og.html` / `_og2.html`), renderizados com Chrome headless
+em 1200×630 e salvos como JPG qualidade 88.
+
 ## Deploy
 
 Site estático, sem dependências. Basta subir a pasta:
